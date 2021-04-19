@@ -30,7 +30,7 @@ FROM base as vgl
 
 WORKDIR /tmp
 RUN curl -fsSL -O 'https://sourceforge.net/projects/virtualgl/files/2.6.5/virtualgl_2.6.5_amd64.deb' \
-    curl -fsSL -O 'https://sourceforge.net/projects/turbovnc/files/2.2.6/turbovnc_2.2.6_amd64.deb' \
+    && curl -fsSL -O 'https://sourceforge.net/projects/turbovnc/files/2.2.6/turbovnc_2.2.6_amd64.deb' \
     && dpkg -i *.deb \
     && printf "1\nn\nn\nn\nx\n" | /opt/VirtualGL/bin/vglserver_config \
     && sed -i 's/$host:/unix:/g' /opt/TurboVNC/bin/vncserver \
