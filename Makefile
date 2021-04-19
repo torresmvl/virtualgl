@@ -12,4 +12,4 @@ up: ## Start containers (dev only!)
 	@docker-compose up
 
 nvidia: ## Start containers with nVidia runtime (needs nvidia-container-toolkit!)
-	@docker-compose -f docker-compose.yml -f docker-compose.nvidia.yml up
+	@docker-compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d

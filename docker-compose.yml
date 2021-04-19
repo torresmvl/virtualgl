@@ -3,15 +3,15 @@ version: '3.8'
 services:
   virtualgl:
     build: .
-    image: reg.growlab.digital/virtualgl
+    image: ghcr.io/torresmvl/virtualgl:latest
     environment:
       DISPLAY: ':0'
     ports:
-      - published: 3000
+      - published: 2222
         target: 22
         protocol: tcp
         mode: host
-      - published: 9000
+      - published: 9001
         target: 9001
         protocol: tcp
         mode: host
