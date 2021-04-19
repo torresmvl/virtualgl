@@ -1,0 +1,9 @@
+---
+version: '3.8'
+services:
+  virtualgl:
+    image: reg.growlab.digital/virtualgl
+    runtime: nvidia
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ./xorg.conf:/etc/X11/xorg.conf
