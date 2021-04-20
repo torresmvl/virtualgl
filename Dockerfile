@@ -1,4 +1,4 @@
-FROM ubuntu:focal as base
+FROM nvidia/opengl:1.2-glvnd-runtime as base
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -6,14 +6,8 @@ RUN apt update -y && \
     apt install --no-install-recommends -y -qq \
     dumb-init \
     supervisor \
-    libglvnd0 \
-    libgl1 \
-    libglx0 \
-    libegl1 \
     libglu1-mesa \
-    libxext6 \
     libxtst6 \
-    libx11-6 \
     libxv1 \
     xserver-xorg-core \
     x11-xserver-utils \
