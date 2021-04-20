@@ -16,8 +16,4 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ~/.ssh/authorized_keys:/root/authorized_keys
-      - data:/data
-
-volumes:
-  data: {}
+      - ./data:/data
