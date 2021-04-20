@@ -21,6 +21,14 @@ jobs:
           images: |
             reg.growlab.digital/virtualgl
             ghcr.io/torresmvl/virtualgl
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to reg.growlab.digital
@@ -41,8 +49,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: |
-            reg.growlab.digital/virtualgl:latest
-            ghcr.io/torresmvl/virtualgl:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=reg.growlab.digital/virtualgl:latest
           cache-to: type=inline
