@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'master'
+    tags:
+      - 'v*'
 
 jobs:
   docker:
@@ -12,8 +14,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+      - name: Docker meta
+        id: meta
+        uses: crazy-max/ghaction-docker-meta@v2
+        with:
+          images: |
+            reg.growlab.digital/virtualgl
+            ghcr.io/torresmvl/virtualgl
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to reg.growlab.digital
